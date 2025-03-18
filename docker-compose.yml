@@ -3,6 +3,8 @@ name: desafio-neoway
 
 services:
   app:
+    image: dpereira99/desafio-neoway:latest
+    container_name: servico-neoway
     build: ./app
     environment:
       - DB_HOST=db
@@ -16,6 +18,7 @@ services:
 
   db:
     image: postgres:13
+    container_name: db-postgres
     environment:
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
