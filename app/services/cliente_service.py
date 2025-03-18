@@ -117,7 +117,7 @@ def validar_clientes(clientes: DataFrame):
         clientes['valido'] = clientes.apply(lambda c: 's' if pd.isnull(c['loja_da_ultima_compra']) else 's' if cnpj.validate(c['loja_da_ultima_compra']) else 'n', axis=1)
         return clientes
     except Exception as err:
-        logger.error(f'Unexpected {err=}, {type(err)=}')
+        logger.error(f'Erro não esperado: {err=}, {type(err)=}')
         return None
     finally:
         logger.info('Finalizado validação dos clientes')

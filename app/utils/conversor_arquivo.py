@@ -59,7 +59,7 @@ def converter_para_dataframe(dir_arquivo: str) -> pd.DataFrame:
 
         return df
     except Exception as err:
-        logger.error(f'Unexpected {err=}, {type(err)=}')
+        logger.error(f'Erro não esperado: {err=}, {type(err)=}')
         return None
     finally:
         logger.info('Conversão finalizada')

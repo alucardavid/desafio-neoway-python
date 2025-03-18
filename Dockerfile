@@ -1,4 +1,4 @@
-FROM python:3.14.0a6-slim-bullseye
+FROM python:3.13
 
 WORKDIR /app
 
@@ -6,6 +6,6 @@ COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . /app
+COPY . .
 
-CMD ["python", "main.py"]
+CMD ["python", "app/main.py"]

@@ -24,8 +24,8 @@ def criar_tabelas():
     ---------------
     criar_tabelas()
     """
-
-    Base.metadata.create_all(engine, checkfirst=True)
+    Base.metadata.drop_all(bind=engine)
+    Base.metadata.create_all(engine, checkfirst=False)
 
 def salvar_clientes(clientes: DataFrame) -> int: 
     """
@@ -69,10 +69,10 @@ def salvar_clientes(clientes: DataFrame) -> int:
         logger.info(f'Foi salvo na base de dados um total de {clientes.shape[0]}.')
         return clientes.shape[0]
     except Exception as err:
-        logger.error(f'Unexpected {err=}, {type(err)=}')
+        logger.error(f'Erro não esperado: {err=}, {type(err)=}')
         return None
     finally:
-        logger.info('Finalizado a percistencia dos clientes na base de dados.')
+        logger.info('A persistência dos clientes na base de dados foi concluída.')
 
 
     
