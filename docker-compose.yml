@@ -1,0 +1,42 @@
+version: '3.8'
+name: desafio-neoway
+
+services:
+  app:
+    build: ./app
+    environment:
+      - DB_HOST=db
+      - DB_NAME=postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  watchtower:
+    container_name: watchtower
+    image: containrrr/watchtower
+    environment:
+      - WATCHTOWER_CLEANUP=true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 30
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
