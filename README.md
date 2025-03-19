@@ -206,6 +206,26 @@ Isso garantirá que todas as tabelas definidas no modelo `Base` sejam criadas no
 
 #### DDL
 
+```sql
+-- public.clientes definição
 
+-- Drop table
+
+-- DROP TABLE public.clientes;
+
+CREATE TABLE public.clientes (
+	cpf varchar(18) NOT NULL,
+	private int4 NULL,
+	incompleto int4 NULL,
+	data_ultima_compra date NULL,
+	ticket_medio numeric(16, 2) NULL,
+	ticket_medio_ultima_compra numeric(16, 2) NULL,
+	loja_mais_frequente varchar(18) NULL,
+	loja_da_ultima_compra varchar(18) NULL,
+	valido varchar(1) NULL,
+	CONSTRAINT clientes_pkey PRIMARY KEY (cpf)
+);
+
+```
 
 
