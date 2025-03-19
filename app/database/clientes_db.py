@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 engine = create_engine(f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@{os.getenv('DB_HOST')}/{os.getenv('DB_NAME')}")
 
 def criar_tabelas():
-    """
+    '''
     Cria as tabelas necessárias no banco de dados se ainda não existirem.
 
     Utiliza a configuração do SQLAlchemy para criar todas as tabelas mapeadas pelo ORM a partir do modelo `Base`.
@@ -23,12 +23,12 @@ def criar_tabelas():
     Exemplo de Uso:
     ---------------
     criar_tabelas()
-    """
+    '''
     Base.metadata.drop_all(bind=engine)
     Base.metadata.create_all(engine, checkfirst=False)
 
 def salvar_clientes(clientes: DataFrame) -> int: 
-    """
+    '''
     Salva os dados de clientes no banco de dados.
 
     A função insere os dados de um DataFrame de clientes na tabela 'clientes' do banco de dados.
@@ -58,7 +58,7 @@ def salvar_clientes(clientes: DataFrame) -> int:
     Exemplo de Uso:
     ---------------
     linhas_salvas = salvar_clientes(clientes_dataframe)
-    """
+    '''
 
     logger.info('Iniciando a persistencia dos clientes na base de dados.')
 

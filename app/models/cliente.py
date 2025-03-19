@@ -2,7 +2,7 @@ from database.base import Base
 from sqlalchemy import Column, String, Integer, Date, Numeric
 
 class Cliente(Base):
-    """
+    '''
     Modelo de dados que representa a tabela 'clientes' no banco de dados.
 
     Esta classe utiliza o SQLAlchemy ORM para mapear a tabela 'clientes' e suas colunas
@@ -25,7 +25,7 @@ class Cliente(Base):
         loja_da_ultima_compra='Loja B',
         valido='s'
     )
-    """
+    '''
     __tablename__ = 'clientes'
 
     cpf = Column(String(18), primary_key=True, )
